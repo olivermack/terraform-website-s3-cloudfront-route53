@@ -44,7 +44,7 @@ resource "aws_s3_bucket" "website_bucket" {
   //    target_prefix = "${var.log_bucket_prefix}"
   //  }
 
-  tags = "${merge("${var.tags}",map("Name", "${var.project}-${var.environment}-${var.domain}", "Environment", "${var.environment}", "Project", "${var.project}"))}"
+  tags = "${merge("${var.tags}",map("Name", "${var.project}-${var.environment}", "Environment", "${var.environment}", "Project", "${var.project}"))}"
 }
 
 ################################################################################################################
@@ -141,7 +141,7 @@ resource "aws_cloudfront_distribution" "website_cdn" {
     minimum_protocol_version = "TLSv1"
   }
 
-  aliases = ["${var.domain}"]
+  aliases = ["${var.domains}"]
 
-  tags = "${merge("${var.tags}",map("Name", "${var.project}-${var.environment}-${var.domain}", "Environment", "${var.environment}", "Project", "${var.project}"))}"
+  tags = "${merge("${var.tags}",map("Name", "${var.project}-${var.environment}", "Environment", "${var.environment}", "Project", "${var.project}"))}"
 }

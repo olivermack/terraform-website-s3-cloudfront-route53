@@ -9,7 +9,10 @@ variable environment {
   default = "default"
 }
 
-variable domain {}
+variable domains {
+  description = "List of domains that should be set up as aliases for the cloudfront distribution"
+  type = "list"
+}
 
 variable bucket_name {
   description = "The name of the S3 bucket to create."
